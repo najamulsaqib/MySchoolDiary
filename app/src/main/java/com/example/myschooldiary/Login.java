@@ -3,7 +3,10 @@ package com.example.myschooldiary;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,6 +52,10 @@ public class Login extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!isNetworkAvailable()){
+                    Toast.makeText(Login.this, "Internet Not Connected",Toast.LENGTH_LONG).show();
+                    return;
+                }
                 String Email = email.getText().toString().trim();
                 String Pass = pass.getText().toString();
                 if(Email.isEmpty()){
@@ -115,5 +122,10 @@ public class Login extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager= (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

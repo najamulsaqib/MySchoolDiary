@@ -5,14 +5,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Student">
+    tools:context=".Student"
+    android:orientation="vertical">
     <TextView
+        android:id="@+id/headerName"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Student"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="40dp"
         android:textColor="@color/teal_200"
         android:gravity="center"
-        android:textSize="50dp"
         />
-
+    <TextView
+        android:id="@+id/noWork"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="WoHoo! No Work Today!"
+        android:textSize="60sp"
+        android:gravity="center"
+        android:textColor="@color/green"
+        android:visibility="gone"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView"/>
 </LinearLayout>

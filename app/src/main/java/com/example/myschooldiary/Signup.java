@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,9 +35,9 @@ public class Signup extends AppCompatActivity {
     private RadioGroup rg;
     private EditText class_code, name, email, pass;
     private Button btn;
-    String Name, Email, Pass, Code, designation;
+    private String Name, Email, Pass, Code, designation;
     private ProgressBar progressBar;
-    Users user;
+    private Users user;
     private FirebaseAuth mAuth;
 
     @Override
@@ -78,6 +81,10 @@ public class Signup extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!isNetworkAvailable()){
+                    Toast.makeText(Signup.this, "Internet Not Connected",Toast.LENGTH_LONG).show();
+                    return;
+                }
                 Name = name.getText().toString().trim();
                 Email = email.getText().toString().trim();
                 Pass = pass.getText().toString();
@@ -155,5 +162,10 @@ public class Signup extends AppCompatActivity {
         }
         String saltStr = salt.toString();
         return saltStr;
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager= (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }
