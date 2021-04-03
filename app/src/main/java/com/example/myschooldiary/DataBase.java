@@ -1,6 +1,7 @@
 package com.example.myschooldiary;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 
 public class DataBase {
+
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     Context context;
     DataBase(Context context){
@@ -41,5 +43,8 @@ public class DataBase {
                 Toast.makeText(context, "UnKnown Error!", Toast.LENGTH_LONG).show();
             }
         });
+    }
+    public void Login(){
+
     }
 }

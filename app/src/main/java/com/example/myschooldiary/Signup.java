@@ -1,5 +1,6 @@
 package com.example.myschooldiary;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,12 +9,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.auth.User;
 
+import java.util.HashMap;
 import java.util.Random;
 import java.util.UUID;
 
@@ -25,8 +34,10 @@ public class Signup extends AppCompatActivity {
     private RadioGroup rg;
     private EditText class_code, name, email, pass;
     private Button btn;
-    String Id, Name, Email, Pass, Code, designation;
-    private DataBase dataBase;
+    String Name, Email, Pass, Code, designation;
+    private ProgressBar progressBar;
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +51,8 @@ public class Signup extends AppCompatActivity {
         email = findViewById(R.id.email);
         pass = findViewById(R.id.pass);
         btn = findViewById(R.id.signup_btn);
-        dataBase = new DataBase(Signup.this);
+        progressBar = findViewById(R.id.progress);
+        mAuth = FirebaseAuth.getInstance();
         designation = "Student";
         //----------------------------------------------------->
         login.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +87,45 @@ public class Signup extends AppCompatActivity {
                     Code = createClassCode();
                 }
                 if(!Name.equalsIgnoreCase("") && !Email.equalsIgnoreCase("") && !Pass.equalsIgnoreCase("")){
-                    dataBase.SignUp(Name,Email,Pass,Code, designation);
+                    progressBar.setVisibility(View.VISIBLE);
+                    mAuth.createUserWithEmailAndPassword(Email, Pass)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful()){
+                                        String Id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                        HashMap<String, Object> map = new HashMap<>();
+                                        map.put("Id", Id);
+                                        map.put("Email", Email);
+                                        map.put("Name", Name);
+                                        map.put("Pass", Pass);
+                                        map.put("ClassCode", Code);
+
+                                        db.collection("Users").document(Id).set(map)
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()){
+                                                            Toast.makeText(Signup.this, "SignUp Successful!", Toast.LENGTH_LONG).show();
+                                                            startActivity(new Intent(Signup.this, Login.class));
+                                                            finish();
+                                                        }
+                                                    }
+                                                }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast.makeText(Signup.this, "UnKnown Error!", Toast.LENGTH_LONG).show();
+                                                startActivity(new Intent(Signup.this, Login.class));
+                                                finish();
+                                            }
+                                        });
+                                    }else {
+                                        Toast.makeText(Signup.this, "UnKnown Error!", Toast.LENGTH_LONG).show();
+                                        startActivity(new Intent(Signup.this, Login.class));
+                                        finish();
+                                    }
+                                }
+                            });
                     startActivity(new Intent(Signup.this, Login.class));
                     finish();
                 }
