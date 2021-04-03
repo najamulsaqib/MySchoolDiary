@@ -3,6 +3,7 @@ package com.example.myschooldiary;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -19,14 +20,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.auth.User;
 
-import java.util.HashMap;
-import java.util.Random;
-import java.util.UUID;
 
-import javax.crypto.NullCipher;
+import java.util.Random;
 
 public class Signup extends AppCompatActivity {
 
@@ -36,8 +34,9 @@ public class Signup extends AppCompatActivity {
     private Button btn;
     String Name, Email, Pass, Code, designation;
     private ProgressBar progressBar;
+    Users user;
     private FirebaseAuth mAuth;
-    private FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,59 +78,69 @@ public class Signup extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Name = name.getText().toString();
-                Email = email.getText().toString();
+                Name = name.getText().toString().trim();
+                Email = email.getText().toString().trim();
                 Pass = pass.getText().toString();
-                Code = class_code.getText().toString();
+                Code = class_code.getText().toString().toUpperCase();
+
+                if(Name.isEmpty()){
+                    name.setError("This field Can't be empty!");
+                    name.requestFocus();
+                    return;
+                }
+                if(Email.isEmpty()){
+                    email.setError("This field Can't be empty!");
+                    email.requestFocus();
+                    return;
+                }
+                if(Pass.isEmpty()){
+                    pass.setError("This field Can't be empty!");
+                    pass.requestFocus();
+                    return;
+                }
+                if(Pass.length() < 6){
+                    pass.setError("Password length cannot be less than 6");
+                    pass.requestFocus();
+                    return;
+                }
                 if (Code.equalsIgnoreCase("") && designation.equals("Teacher")) {
                     Code = createClassCode();
                 }
-                if(!Name.equalsIgnoreCase("") && !Email.equalsIgnoreCase("") && !Pass.equalsIgnoreCase("")){
-                    progressBar.setVisibility(View.VISIBLE);
-                    mAuth.createUserWithEmailAndPassword(Email, Pass)
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if(task.isSuccessful()){
-                                        String Id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                        HashMap<String, Object> map = new HashMap<>();
-                                        map.put("Id", Id);
-                                        map.put("Email", Email);
-                                        map.put("Name", Name);
-                                        map.put("Pass", Pass);
-                                        map.put("ClassCode", Code);
-
-                                        db.collection("Users").document(Id).set(map)
-                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<Void> task) {
-                                                        if (task.isSuccessful()){
-                                                            Toast.makeText(Signup.this, "SignUp Successful!", Toast.LENGTH_LONG).show();
-                                                            startActivity(new Intent(Signup.this, Login.class));
-                                                            finish();
-                                                        }
-                                                    }
-                                                }).addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Toast.makeText(Signup.this, "UnKnown Error!", Toast.LENGTH_LONG).show();
-                                                startActivity(new Intent(Signup.this, Login.class));
-                                                finish();
-                                            }
-                                        });
-                                    }else {
-                                        Toast.makeText(Signup.this, "UnKnown Error!", Toast.LENGTH_LONG).show();
-                                        startActivity(new Intent(Signup.this, Login.class));
-                                        finish();
+                if(Code.isEmpty()){
+                    class_code.setError("This field Can't be empty!");
+                    class_code.requestFocus();
+                    return;
+                }
+                progressBar.setVisibility(View.VISIBLE);
+                mAuth.createUserWithEmailAndPassword(Email, Pass)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+                                    user = new Users(Name, Email, Code, designation);
+                                    String Id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                    FirebaseDatabase.getInstance().getReference("Users")
+                                            .child(Id).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()){
+                                            Toast.makeText(Signup.this, "SignUp Successful!", Toast.LENGTH_LONG).show();
+                                            startActivity(new Intent(Signup.this, Login.class));
+                                            progressBar.setVisibility(View.GONE);
+                                            finish();
+                                        }
                                     }
-                                }
-                            });
-                    startActivity(new Intent(Signup.this, Login.class));
-                    finish();
-                }
-                else {
-                    Toast.makeText(Signup.this, "Some Input Fields are Empty", Toast.LENGTH_LONG).show();
-                }
+                                });
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Signup.this, e.toString(), Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(Signup.this, Signup.class));
+                        finish();
+                    }
+                });
             }
         });
     }

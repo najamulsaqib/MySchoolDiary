@@ -5,6 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Signup">
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -64,13 +69,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Student"
-                    android:layout_marginLeft="35dp"/>
-                <ProgressBar
-                    android:id="@+id/progress"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:visibility="gone"
-                    />
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="50dp"/>
                 <RadioButton
                     android:id="@+id/r_teacher"
                     android:layout_width="wrap_content"
@@ -83,8 +83,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Class Code"
-                android:inputType="numberDecimal"
+                android:inputType="textCapCharacters"
                 android:layout_marginTop="10dp"
+                android:maxLength="6"
                 />
             <Button
                 android:id="@+id/signup_btn"
