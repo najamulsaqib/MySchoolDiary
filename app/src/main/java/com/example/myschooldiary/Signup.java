@@ -133,7 +133,7 @@ public class Signup extends AppCompatActivity {
                                         if(task.isSuccessful()){
                                             Toast.makeText(Signup.this, "SignUp Successful!", Toast.LENGTH_LONG).show();
                                             startActivity(new Intent(Signup.this, Login.class));
-                                            progressBar.setVisibility(View.GONE);
+//                                            progressBar.setVisibility(View.GONE);
                                             finish();
                                         }
                                     }

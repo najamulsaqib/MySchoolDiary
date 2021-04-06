@@ -11,51 +11,44 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="10dp"
             android:layout_marginBottom="10dp"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="gone"/>
-
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/image"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/logo_small" />
-
-                <LinearLayout
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/topic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:text="Science"
+                    android:textColor="@color/teal_700"
+                    android:textStyle="bold"
+                    android:fontFamily="cursive"
+                    android:maxLines="1"
+                    android:textSize="25dp" />
 
-                    <TextView
-                        android:id="@+id/topic"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Science"
-                        android:maxLines="1"
-                        android:textSize="25dp" />
-
-                    <TextView
-                        android:id="@+id/description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:maxLines="4"
-                        android:text="The strength of Science and its online journal sites rests with the strengths of its community of authors, who provide cutting-edge research, incisive scientific" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="4"
+                    android:textColor="@color/teal_700"
+                    android:fontFamily="casual"
+                    android:text="The strength of Science and its online journal sites rests with the strengths of its community of authors, who provide cutting-edge research, incisive scientific" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"

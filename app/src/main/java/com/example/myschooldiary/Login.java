@@ -109,7 +109,7 @@ public class Login extends AppCompatActivity {
                         }else {
                             Toast.makeText(Login.this, "Wrong Email or Password!", Toast.LENGTH_LONG).show();
                         }
-                        progressBar.setVisibility(View.GONE);
+//                        progressBar.setVisibility(View.GONE);
                     }
                 });
             }

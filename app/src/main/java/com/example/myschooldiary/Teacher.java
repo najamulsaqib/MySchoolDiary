@@ -25,6 +25,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.core.OrderBy;
 
 import org.w3c.dom.Document;
 
@@ -37,7 +38,7 @@ public class Teacher extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference reference;
     private FirebaseFirestore firebaseFirestore;
-    private DocumentReference documentReference;
+//    private DocumentReference documentReference;
     private String UserID, ClassCode, Name;
     private TextView headerName, noWork;
     private ArrayList<model> dataList;
@@ -90,8 +91,8 @@ public class Teacher extends AppCompatActivity {
             }
         });
 //        ---------------------------------------------------->
-
-        firebaseFirestore.collection("Work").whereEqualTo("ClassCode", ClassCode).orderBy("Date").get()
+//.orderBy("Date")
+        firebaseFirestore.collection("Work").whereEqualTo("ClassCode", "SZR4OP").orderBy("Date", Query.Direction.DESCENDING).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
