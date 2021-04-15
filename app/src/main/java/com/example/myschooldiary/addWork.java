@@ -46,22 +46,22 @@ public class addWork extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch(checkedId){
                     case R.id.science:
-                        Image = "R.drawable.science";
+                        Image = "science";
                         break;
                     case R.id.english:
-                        Image = "R.drawable.english";
+                        Image = "english";
                         break;
                     case R.id.urdu:
-                        Image = "R.drawable.urdu";
+                        Image = "urdu";
                         break;
                     case R.id.math:
-                        Image = "R.drawable.math";
+                        Image = "math";
                         break;
                     case R.id.gk:
-                        Image = "R.drawable.gk";
+                        Image = "gk";
                         break;
                     case R.id.other:
-                        Image = "R.drawable.others";
+                        Image = "others";
                         break;
                 }
             }
@@ -92,6 +92,7 @@ public class addWork extends AppCompatActivity {
         map.put("Description", Description);
         map.put("Image", Image);
         map.put("Date", currentTime);
+        map.put("Id", Id);
 
         db.collection("Work").document(Id).set(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -99,7 +100,9 @@ public class addWork extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(addWork.this, "Data Saved!", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(addWork.this, Teacher.class));
+                            Intent i = new Intent(addWork.this, Teacher.class);
+                            i.putExtra("ClassCode", ClassCode);
+                            startActivity(i);
                             finish();
                         }
                     }

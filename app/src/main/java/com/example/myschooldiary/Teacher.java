@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,11 +35,11 @@ import java.util.List;
 import java.util.Queue;
 
 public class Teacher extends AppCompatActivity {
-    private FirebaseAuth mAuth;
+
     private FirebaseUser user;
-    private DatabaseReference reference;
+
     private FirebaseFirestore firebaseFirestore;
-//    private DocumentReference documentReference;
+    private DocumentReference documentReference;
     private String UserID, ClassCode, Name;
     private TextView headerName, noWork;
     private ArrayList<model> dataList;
@@ -56,32 +57,18 @@ public class Teacher extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
-        mAuth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
         firebaseFirestore = FirebaseFirestore.getInstance();
         UserID = user.getUid();
 //        ---------------------------------------------------->
         dataList = new ArrayList<>();
-        adapter = new myAdapter(dataList);
+        adapter = new myAdapter(dataList, this);
         recyclerView.setAdapter(adapter);
+        Intent intent = getIntent();
+        ClassCode = intent.getStringExtra("ClassCode");
+        UserID = intent.getStringExtra("User");
 //        ------------------------------------------------------>
-        reference.child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Users userGet = snapshot.getValue(Users.class);
-                if(userGet != null){
-                    ClassCode = userGet.Code;
-                    Name = userGet.Name;
-                    headerName.setText("Hi! "+Name);
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Teacher.this, "Something Happened Wrong!", Toast.LENGTH_LONG).show();
-            }
-        });
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,8 +78,11 @@ public class Teacher extends AppCompatActivity {
             }
         });
 //        ---------------------------------------------------->
-//.orderBy("Date")
-        firebaseFirestore.collection("Work").whereEqualTo("ClassCode", "SZR4OP").orderBy("Date", Query.Direction.DESCENDING).get()
+        Object classCode = ClassCode;
+        firebaseFirestore.collection("Work")
+                .whereEqualTo("ClassCode", classCode)
+                .orderBy("Date", Query.Direction.DESCENDING)
+                .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -105,6 +95,5 @@ public class Teacher extends AppCompatActivity {
                         adapter.notifyDataSetChanged();
                     }
                 });
-
     }
 }

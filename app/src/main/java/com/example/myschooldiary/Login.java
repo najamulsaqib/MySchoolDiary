@@ -36,12 +36,13 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private DatabaseReference reference;
-    private String UserID, Designation;
+    private String UserID, Designation, ClassCode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
+
         signup = findViewById(R.id.signup_intent);
         btn = findViewById(R.id.login_btn);
         email = findViewById(R.id.email);
@@ -87,12 +88,19 @@ public class Login extends AppCompatActivity {
                                     Users userGet = snapshot.getValue(Users.class);
                                     if(userGet != null){
                                         Designation = userGet.Designation;
+                                        ClassCode = userGet.Code;
                                         if(Designation.equals("Teacher")){
-                                            startActivity(new Intent(Login.this, Teacher.class));
+                                            Intent i = new Intent(Login.this, teacherDashboard.class);
+                                            i.putExtra("ClassCode", ClassCode);
+                                            i.putExtra("User", UserID);
+                                            startActivity(i);
                                             finish();
                                         }
                                         else if(Designation.equals("Student")){
-                                            startActivity(new Intent(Login.this, Student.class));
+                                            Intent i = new Intent(Login.this, Student.class);
+                                            i.putExtra("ClassCode", ClassCode);
+                                            i.putExtra("User", UserID);
+                                            startActivity(i);
                                             finish();
                                         }
 //                                        progressBar.setVisibility(View.GONE);
@@ -129,3 +137,12 @@ public class Login extends AppCompatActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }
+
+//Intent i = new Intent(Login.this, Student.class);
+//i.putExtra("ClassCode", ClassCode);
+//i.putExtra("User", UserID);
+//startActivity(i);
+//---------------->
+//Intent intent = getIntent();
+//ClassCode = intent.getStringExtra("ClassCode");
+//UserID = intent.getStringExtra("User");

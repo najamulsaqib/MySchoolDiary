@@ -8,10 +8,8 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
-        app:cardCornerRadius="30dp">
+        android:layout_marginBottom="3dp"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,7 +35,7 @@
                     android:text="Science"
                     android:textColor="@color/teal_700"
                     android:textStyle="bold"
-                    android:fontFamily="cursive"
+                    android:fontFamily="casual"
                     android:maxLines="1"
                     android:textSize="25dp" />
 
@@ -56,12 +54,14 @@
                 android:orientation="horizontal"
                 android:layout_gravity="center">
                 <ImageView
+                    android:id="@+id/edit"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_edit"
                     android:layout_marginRight="100dp"
                     />
                 <ImageView
+                    android:id="@+id/delete"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_delete"

@@ -21,24 +21,10 @@
         android:clickable="true"
         android:background="@drawable/btn_login"
         app:srcCompat="@android:drawable/ic_input_add" />
-    <TextView
-        android:id="@+id/headerName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textSize="40dp"
-        android:textColor="@color/teal_700"
-        android:fontFamily="casual"
-        android:gravity="center"
-        />
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp">
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/recyclerView"/>
-    </ScrollView>
+        android:id="@+id/recyclerView"/>
 
 </RelativeLayout>

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myschooldiary">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MySchoolDiary">
-        <activity android:name=".addWork"></activity>
+        <activity android:name=".TimeTable"></activity>
+        <activity android:name=".teacherDashboard" />
+        <activity android:name=".addWork" />
         <activity android:name=".Student" />
         <activity android:name=".Teacher" />
         <activity android:name=".Signup" />
@@ -21,6 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".popup"
+            android:theme="@style/customTheme"/>
     </application>
 
 </manifest>

@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Work"
+            android:text="Add Home Work"
             android:gravity="center"
             android:textSize="40dp"
             android:fontFamily="casual"
@@ -92,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            android:text="Add Work"
+            android:text="Add Home Work"
             android:background="@drawable/btn_login"/>
     </LinearLayout>
 </LinearLayout>

@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Student"
-    android:orientation="vertical">
+    android:theme="@style/NoActionBar"
+    >
     <TextView
-        android:id="@+id/headerName"
+        android:id="@+id/day"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name"
-        android:textSize="40dp"
         android:textColor="@color/teal_700"
+        android:textStyle="bold"
+        android:textSize="30sp"
         android:fontFamily="casual"
-        android:gravity="center"
-        />
-    <TextView
-        android:id="@+id/noWork"
+        android:gravity="center"/>
+    <ListView
+        android:id="@+id/lv1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="WoHoo! No Work Today!"
-        android:textSize="60sp"
-        android:gravity="center"
-        android:textColor="@color/green"
+        android:divider="@color/teal_700"
+        android:dividerHeight="2dp"
         android:visibility="gone"/>
-
-    <androidx.recyclerview.widget.RecyclerView
+    <TextView
+        android:id="@+id/holiday"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerView"/>
+        android:text="Holiday"
+        android:fontFamily="casual"
+        android:textColor="#21ed36"
+        android:textSize="70dp"
+        android:gravity="center"
+        android:visibility="gone"
+        />
 </LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="30dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Home Work"
+        android:gravity="center"
+        android:textSize="40dp"
+        android:fontFamily="casual"
+        android:textColor="@color/teal_200"/>
+    <EditText
+        android:id="@+id/topic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/teal_700"
+        android:fontFamily="casual"
+        android:hint="Topic"/>
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:inputType="textMultiLine"
+        android:textColor="@color/teal_700"
+        android:fontFamily="casual"
+        android:maxLines="3"
+        android:hint="Description"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/update_work"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:text="Update Home Work"
+        android:background="@drawable/btn_login"/>
+</LinearLayout>
