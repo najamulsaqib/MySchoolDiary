@@ -62,7 +62,7 @@
                     android:layout_below="@id/bus"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:text="Attendance"
+                    android:text="Parent's Note"
                     android:textColor="@color/teal_700"
                     android:textSize="24sp"
                     app:fontFamily="casual" />

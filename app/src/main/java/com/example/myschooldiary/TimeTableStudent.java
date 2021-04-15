@@ -8,20 +8,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-public class TimeTable extends AppCompatActivity {
-
+public class TimeTableStudent extends AppCompatActivity {
     TextView monday, tuesday, wednesday, thursday, friday, saturday, sunday;
     String ClassCode, UserID;
-    FloatingActionButton floatingActionButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_time_table);
+        setContentView(R.layout.activity_time_table_student);
         getSupportActionBar().hide();
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
+//        ------------------------------------------------------->
         monday = findViewById(R.id.monday);
         tuesday = findViewById(R.id.tuesday);
         wednesday = findViewById(R.id.wednesday);
@@ -29,7 +25,6 @@ public class TimeTable extends AppCompatActivity {
         friday = findViewById(R.id.friday);
         saturday = findViewById(R.id.saturday);
         sunday = findViewById(R.id.sunday);
-        floatingActionButton = findViewById(R.id.floatingActionButton);
         Intent intent = getIntent();
         ClassCode = intent.getStringExtra("ClassCode");
         UserID = intent.getStringExtra("User");
@@ -37,7 +32,7 @@ public class TimeTable extends AppCompatActivity {
         monday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TimeTable.this, popup.class);
+                Intent i = new Intent(TimeTableStudent.this, popup.class);
                 i.putExtra("ClassCode", ClassCode);
                 i.putExtra("User", UserID);
                 i.putExtra("Day", "Monday");
@@ -47,7 +42,7 @@ public class TimeTable extends AppCompatActivity {
         tuesday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TimeTable.this, popup.class);
+                Intent i = new Intent(TimeTableStudent.this, popup.class);
                 i.putExtra("ClassCode", ClassCode);
                 i.putExtra("User", UserID);
                 i.putExtra("Day", "Tuesday");
@@ -57,7 +52,7 @@ public class TimeTable extends AppCompatActivity {
         wednesday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TimeTable.this, popup.class);
+                Intent i = new Intent(TimeTableStudent.this, popup.class);
                 i.putExtra("ClassCode", ClassCode);
                 i.putExtra("User", UserID);
                 i.putExtra("Day", "Wednesday");
@@ -67,7 +62,7 @@ public class TimeTable extends AppCompatActivity {
         thursday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TimeTable.this, popup.class);
+                Intent i = new Intent(TimeTableStudent.this, popup.class);
                 i.putExtra("ClassCode", ClassCode);
                 i.putExtra("User", UserID);
                 i.putExtra("Day", "Thursday");
@@ -77,7 +72,7 @@ public class TimeTable extends AppCompatActivity {
         friday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TimeTable.this, popup.class);
+                Intent i = new Intent(TimeTableStudent.this, popup.class);
                 i.putExtra("ClassCode", ClassCode);
                 i.putExtra("User", UserID);
                 i.putExtra("Day", "Friday");
@@ -87,7 +82,7 @@ public class TimeTable extends AppCompatActivity {
         saturday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TimeTable.this, popup.class);
+                Intent i = new Intent(TimeTableStudent.this, popup.class);
                 i.putExtra("ClassCode", ClassCode);
                 i.putExtra("User", UserID);
                 i.putExtra("Day", "Saturday");
@@ -97,20 +92,10 @@ public class TimeTable extends AppCompatActivity {
         sunday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TimeTable.this, popup.class);
+                Intent i = new Intent(TimeTableStudent.this, popup.class);
                 i.putExtra("ClassCode", ClassCode);
                 i.putExtra("User", UserID);
                 i.putExtra("Day", "Sunday");
-                startActivity(i);
-            }
-        });
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(TimeTable.this, popup.class);
-                i.putExtra("ClassCode", ClassCode);
-                i.putExtra("User", UserID);
-                i.putExtra("Day", "Monday");
                 startActivity(i);
             }
         });

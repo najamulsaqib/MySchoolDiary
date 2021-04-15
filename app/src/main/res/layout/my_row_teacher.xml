@@ -17,20 +17,14 @@
             android:layout_margin="10dp"
             android:layout_marginBottom="10dp"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"/>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
                 <TextView
                     android:id="@+id/topic"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Science"
                     android:textColor="@color/teal_700"
@@ -41,7 +35,7 @@
 
                 <TextView
                     android:id="@+id/description"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="4"
                     android:textColor="@color/teal_700"
@@ -49,10 +43,10 @@
                     android:text="The strength of Science and its online journal sites rests with the strengths of its community of authors, who provide cutting-edge research, incisive scientific" />
             </LinearLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_gravity="center">
+                android:gravity="center">
                 <ImageView
                     android:id="@+id/edit"
                     android:layout_width="30dp"

@@ -22,7 +22,7 @@
         android:background="@drawable/btn_login"
         app:srcCompat="@android:drawable/ic_input_add" />
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="10dp"
+        android:paddingTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerView"/>

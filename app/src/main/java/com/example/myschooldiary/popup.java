@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatDelegate;
+
 import java.util.ArrayList;
 
 
@@ -17,6 +19,8 @@ public class popup extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup);
+        getActionBar().hide();
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         TextView day = findViewById(R.id.day);
         ListView listView = findViewById(R.id.lv1);
         TextView holiday = findViewById(R.id.holiday);
@@ -46,6 +50,6 @@ public class popup extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.8), (int)(height*.6));
+        getWindow().setLayout((int)(width*.8), (int)(height*.52));
     }
 }

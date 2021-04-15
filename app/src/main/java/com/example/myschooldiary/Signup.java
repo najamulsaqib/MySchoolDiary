@@ -2,6 +2,7 @@ package com.example.myschooldiary;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -24,9 +25,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.auth.User;
 
 
+import java.util.HashMap;
 import java.util.Random;
 
 public class Signup extends AppCompatActivity {
@@ -39,12 +42,14 @@ public class Signup extends AppCompatActivity {
     private ProgressBar progressBar;
     private Users user;
     private FirebaseAuth mAuth;
+    private FirebaseFirestore firebaseFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         getSupportActionBar().hide();
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         //---------------------------------------------------->
         login = findViewById(R.id.login_intent);
         rg = findViewById(R.id.radio);
@@ -55,6 +60,7 @@ public class Signup extends AppCompatActivity {
         btn = findViewById(R.id.signup_btn);
         progressBar = findViewById(R.id.progress);
         mAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
         designation = "Student";
         //----------------------------------------------------->
         login.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +131,14 @@ public class Signup extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
                                     user = new Users(Name, Email, Code, designation);
+                                    HashMap<String, Object> map = new HashMap<>();
+                                    map.put("Name", Name);
+                                    map.put("Email", Email);
+                                    map.put("Code", Code);
+                                    map.put("Designation", designation);
+                                    map.put("Pass", Pass);
                                     String Id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                    firebaseFirestore.collection("Users").document(Id).set(map);
                                     FirebaseDatabase.getInstance().getReference("Users")
                                             .child(Id).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="Edit Home Work"
         android:gravity="center"
-        android:textSize="40dp"
+        android:textSize="30dp"
         android:fontFamily="casual"
         android:textColor="@color/teal_200"/>
     <EditText

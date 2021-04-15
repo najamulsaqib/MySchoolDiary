@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MySchoolDiary">
-        <activity android:name=".TimeTable"></activity>
+        <activity android:name=".forget"></activity>
+        <activity android:name=".StudentDiary" />
+        <activity android:name=".TimeTableStudent" />
+        <activity android:name=".AddNote" />
+        <activity android:name=".ParentsQueryTeacherSide" />
+        <activity android:name=".TimeTable" />
         <activity android:name=".teacherDashboard" />
         <activity android:name=".addWork" />
         <activity android:name=".Student" />
@@ -25,8 +30,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".popup"
-            android:theme="@style/customTheme"/>
+        <activity
+            android:name=".popup"
+            android:theme="@style/customTheme" />
     </application>
 
 </manifest>

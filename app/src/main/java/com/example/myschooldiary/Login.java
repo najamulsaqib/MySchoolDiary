@@ -2,6 +2,7 @@ package com.example.myschooldiary;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
 import android.content.Intent;
@@ -29,7 +30,7 @@ import com.google.firebase.firestore.auth.User;
 
 public class Login extends AppCompatActivity {
 
-    private TextView signup;
+    private TextView signup, forget;
     private Button btn;
     private EditText email, pass;
     private ProgressBar progressBar;
@@ -42,8 +43,10 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         signup = findViewById(R.id.signup_intent);
+        forget = findViewById(R.id.forget);
         btn = findViewById(R.id.login_btn);
         email = findViewById(R.id.email);
         pass = findViewById(R.id.pass);
@@ -112,12 +115,13 @@ public class Login extends AppCompatActivity {
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
                                     Toast.makeText(Login.this, "Something Happened Wrong!", Toast.LENGTH_LONG).show();
+                                    progressBar.setVisibility(View.GONE);
                                 }
                             });
                         }else {
                             Toast.makeText(Login.this, "Wrong Email or Password!", Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.GONE);
                         }
-//                        progressBar.setVisibility(View.GONE);
                     }
                 });
             }
@@ -127,6 +131,13 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Login.this, Signup.class);
+                startActivity(i);
+            }
+        });
+        forget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Login.this, forget.class);
                 startActivity(i);
             }
         });

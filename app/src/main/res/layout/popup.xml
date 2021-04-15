@@ -10,7 +10,8 @@
         android:id="@+id/day"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/teal_700"
+        android:textColor="@color/red"
+        android:text="Monday"
         android:textStyle="bold"
         android:textSize="30sp"
         android:fontFamily="casual"
@@ -19,9 +20,9 @@
         android:id="@+id/lv1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/teal_700"
+        android:divider="@color/red"
         android:dividerHeight="2dp"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
     <TextView
         android:id="@+id/holiday"
         android:layout_width="match_parent"

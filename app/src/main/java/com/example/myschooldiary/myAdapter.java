@@ -49,8 +49,39 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myViewHolder>{
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
         holder.topic.setText(dataList.get(position).getTopic());
         holder.desc.setText(dataList.get(position).getDescription());
-        holder.id.setText(dataList.get(position).getId());
         db = FirebaseFirestore.getInstance();
+        holder.topic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogPlus dialog = DialogPlus.newDialog(context)
+                        .setGravity(Gravity.CENTER)
+                        .setContentHolder(new ViewHolder(R.layout.view_work))
+                        .setExpanded(false)  // This will enable the expand feature, (similar to android L share dialog)
+                        .create();
+                View holderView = dialog.getHolderView();
+                TextView topic = holderView.findViewById(R.id.topic_view);
+                TextView description = holderView.findViewById(R.id.description_view);
+                topic.setText(holder.topic.getText());
+                description.setText(holder.desc.getText());
+                dialog.show();
+            }
+        });
+        holder.desc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogPlus dialog = DialogPlus.newDialog(context)
+                        .setGravity(Gravity.CENTER)
+                        .setContentHolder(new ViewHolder(R.layout.view_work))
+                        .setExpanded(false)  // This will enable the expand feature, (similar to android L share dialog)
+                        .create();
+                View holderView = (LinearLayout) dialog.getHolderView();
+                TextView topic = holderView.findViewById(R.id.topic_view);
+                TextView description = holderView.findViewById(R.id.description_view);
+                topic.setText(holder.topic.getText());
+                description.setText(holder.desc.getText());
+                dialog.show();
+            }
+        });
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -161,13 +192,12 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myViewHolder>{
 
     class myViewHolder extends RecyclerView.ViewHolder{
 
-        TextView topic, desc, id;
+        TextView topic, desc;
         ImageView edit, delete;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
             topic = itemView.findViewById(R.id.topic);
             desc = itemView.findViewById(R.id.description);
-            id = itemView.findViewById(R.id.id);
             edit = itemView.findViewById(R.id.edit);
             delete = itemView.findViewById(R.id.delete);
         }

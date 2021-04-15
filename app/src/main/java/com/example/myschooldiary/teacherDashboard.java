@@ -2,16 +2,16 @@ package com.example.myschooldiary;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Path;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,11 +19,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class teacherDashboard extends AppCompatActivity {
 
-    private ImageView Attendance, Diary, Timetable, Logout;
+    private ImageView Notes, Diary, Timetable, Logout;
     private TextView headerName, CodeView;
     private DatabaseReference reference;
     private String UserID, ClassCode, Name;
@@ -34,8 +39,9 @@ public class teacherDashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_dashboard);
         getSupportActionBar().hide();
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 //        --------------------------------------------------------------------->
-        Attendance = findViewById(R.id.bus);
+        Notes = findViewById(R.id.bus);
         Diary = findViewById(R.id.imageView3);
         headerName = findViewById(R.id.textView);
         Timetable = findViewById(R.id.bus1);
@@ -63,12 +69,11 @@ public class teacherDashboard extends AppCompatActivity {
             }
         });
 
-        Attendance.setOnClickListener(new View.OnClickListener() {
+        Notes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(teacherDashboard.this, Teacher.class);
+                Intent i = new Intent(teacherDashboard.this, ParentsQueryTeacherSide.class);
                 i.putExtra("ClassCode", ClassCode);
-                i.putExtra("User", UserID);
                 startActivity(i);
             }
         });
