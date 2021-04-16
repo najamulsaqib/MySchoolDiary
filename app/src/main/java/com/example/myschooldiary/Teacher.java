@@ -45,6 +45,7 @@ public class Teacher extends AppCompatActivity {
     private FloatingActionButton floatingActionButton;
     private RecyclerView recyclerView;
     private myAdapter adapter;
+    private ImageView nothing;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +54,7 @@ public class Teacher extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 //        --------------------------------------------------->
         recyclerView = findViewById(R.id.recyclerView);
+        nothing = findViewById(R.id.nothing);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -89,6 +91,10 @@ public class Teacher extends AppCompatActivity {
                         for(DocumentSnapshot row:list){
                             model obj = row.toObject(model.class);
                             dataList.add(obj);
+                        }
+                        if(dataList.size() < 1){
+                            recyclerView.setVisibility(View.GONE);
+                            nothing.setVisibility(View.VISIBLE);
                         }
                         adapter.notifyDataSetChanged();
                     }

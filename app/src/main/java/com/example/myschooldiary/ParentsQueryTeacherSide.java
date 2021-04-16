@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -23,6 +25,7 @@ public class ParentsQueryTeacherSide extends AppCompatActivity {
     private parentContactAdapter adapter;
     private ArrayList<QueryModel> dataList;
     private String ClassCode;
+    private ImageView nothing;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,7 @@ public class ParentsQueryTeacherSide extends AppCompatActivity {
 //        ---------------------------------------------------------->
         firebaseFirestore = FirebaseFirestore.getInstance();
         recyclerView = findViewById(R.id.recyclerView);
+        nothing = findViewById(R.id.nothing);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         dataList = new ArrayList<>();
         adapter = new parentContactAdapter(dataList, this);
@@ -52,6 +56,10 @@ public class ParentsQueryTeacherSide extends AppCompatActivity {
                         for(DocumentSnapshot row:list){
                             QueryModel obj = row.toObject(QueryModel.class);
                             dataList.add(obj);
+                        }
+                        if(dataList.size() < 1){
+                            recyclerView.setVisibility(View.GONE);
+                            nothing.setVisibility(View.VISIBLE);
                         }
                         adapter.notifyDataSetChanged();
                     }

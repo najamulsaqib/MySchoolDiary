@@ -98,6 +98,7 @@ public class teacherDashboard extends AppCompatActivity {
         Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
                 Intent i = new Intent(teacherDashboard.this, Login.class);
                 startActivity(i);
                 finish();

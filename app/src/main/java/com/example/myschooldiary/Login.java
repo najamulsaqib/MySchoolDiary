@@ -1,6 +1,7 @@
 package com.example.myschooldiary;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
@@ -69,11 +70,6 @@ public class Login extends AppCompatActivity {
                 }
                 if(Pass.isEmpty()){
                     pass.setError("This field Can't be empty!");
-                    pass.requestFocus();
-                    return;
-                }
-                if(Pass.length() < 6){
-                    pass.setError("Password length cannot be less than 6");
                     pass.requestFocus();
                     return;
                 }

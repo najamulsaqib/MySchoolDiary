@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -23,6 +25,7 @@ public class StudentDiary extends AppCompatActivity {
     private RecyclerView recyclerView;
     private customAdapter adapter;
     private String ClassCode;
+    private ImageView nothing;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +34,7 @@ public class StudentDiary extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 //        --------------------------------------------------->
         recyclerView = findViewById(R.id.recyclerView);
+        nothing = findViewById(R.id.nothing);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         firebaseFirestore = FirebaseFirestore.getInstance();
         dataList = new ArrayList<>();
@@ -52,6 +56,10 @@ public class StudentDiary extends AppCompatActivity {
                         for(DocumentSnapshot row:list){
                             model obj = row.toObject(model.class);
                             dataList.add(obj);
+                        }
+                        if(dataList.size() < 1){
+                            recyclerView.setVisibility(View.GONE);
+                            nothing.setVisibility(View.VISIBLE);
                         }
                         adapter.notifyDataSetChanged();
                     }
