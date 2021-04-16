@@ -5,6 +5,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -38,7 +39,21 @@ public class customAdapter extends RecyclerView.Adapter<customAdapter.myViewHold
     public void onBindViewHolder(@NonNull customAdapter.myViewHolder holder, int position) {
         holder.topic.setText(dataList.get(position).getTopic());
         holder.desc.setText(dataList.get(position).getDescription());
-        holder.subject.setText(dataList.get(position).getImage());
+        String Image = dataList.get(position).getImage();
+        holder.subject.setText(Image);
+        if(Image.equalsIgnoreCase("science")){
+            holder.imageView.setImageResource(R.drawable.science);
+        }else if(Image.equalsIgnoreCase("english")){
+            holder.imageView.setImageResource(R.drawable.english);
+        }else if(Image.equalsIgnoreCase("urdu")){
+            holder.imageView.setImageResource(R.drawable.urdu);
+        }else if(Image.equalsIgnoreCase("math")){
+            holder.imageView.setImageResource(R.drawable.math);
+        }else if(Image.equalsIgnoreCase("gk")){
+            holder.imageView.setImageResource(R.drawable.gk);
+        }else if(Image.equalsIgnoreCase("others")){
+            holder.imageView.setImageResource(R.drawable.others);
+        }
         holder.topic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,11 +95,13 @@ public class customAdapter extends RecyclerView.Adapter<customAdapter.myViewHold
 
     public class myViewHolder extends RecyclerView.ViewHolder {
         TextView topic, desc, subject;
+        ImageView imageView;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
             topic = itemView.findViewById(R.id.Topic);
             desc = itemView.findViewById(R.id.description);
             subject = itemView.findViewById(R.id.subject);
+            imageView = itemView.findViewById(R.id.imageView);
         }
     }
 }

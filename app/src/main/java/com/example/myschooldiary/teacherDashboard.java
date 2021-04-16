@@ -1,10 +1,15 @@
 package com.example.myschooldiary;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.protobuf.DescriptorProtos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +57,17 @@ public class teacherDashboard extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
         UserID = user.getUid();
         CodeView = findViewById(R.id.textView2);
+        CodeView.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View v) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("TextView", ClassCode);
+                clipboard.setPrimaryClip(clip);
 
+                Toast.makeText(teacherDashboard.this, "Class Code Copied", Toast.LENGTH_LONG).show();
+            }
+        });
         reference.child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
