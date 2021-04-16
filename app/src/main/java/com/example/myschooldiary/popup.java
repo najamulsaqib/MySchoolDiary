@@ -28,7 +28,7 @@ public class popup extends Activity {
         Intent i = getIntent();
         String Day = i.getStringExtra("Day");
         day.setText(Day);
-        if(Day.equalsIgnoreCase("Saturday") || Day.equalsIgnoreCase("Sunday")) {
+        if(Day.equalsIgnoreCase("Sunday")) {
             listView.setVisibility(View.GONE);
             holiday.setVisibility(View.VISIBLE);
         }else{

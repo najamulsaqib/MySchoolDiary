@@ -44,6 +44,7 @@ public class addWork extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         Intent intent = getIntent();
         ClassCode = intent.getStringExtra("ClassCode");
+        Image = "others";
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch(checkedId){

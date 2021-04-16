@@ -40,21 +40,27 @@ public class customAdapter extends RecyclerView.Adapter<customAdapter.myViewHold
         holder.topic.setText(dataList.get(position).getTopic());
         holder.desc.setText(dataList.get(position).getDescription());
         String Image = dataList.get(position).getImage();
-        holder.subject.setText(Image);
         if(Image.equalsIgnoreCase("science")){
+            holder.subject.setText("Science");
             holder.imageView.setImageResource(R.drawable.science);
         }else if(Image.equalsIgnoreCase("english")){
+            holder.subject.setText("English");
             holder.imageView.setImageResource(R.drawable.english);
         }else if(Image.equalsIgnoreCase("urdu")){
+            holder.subject.setText("Urdu");
             holder.imageView.setImageResource(R.drawable.urdu);
         }else if(Image.equalsIgnoreCase("math")){
+            holder.subject.setText("Mathematics");
             holder.imageView.setImageResource(R.drawable.math);
         }else if(Image.equalsIgnoreCase("gk")){
+            holder.subject.setText("General Knowledge");
             holder.imageView.setImageResource(R.drawable.gk);
         }else if(Image.equalsIgnoreCase("others")){
+            holder.subject.setText("Others");
             holder.imageView.setImageResource(R.drawable.others);
         }
         holder.topic.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 DialogPlus dialog = DialogPlus.newDialog(context)
@@ -63,10 +69,24 @@ public class customAdapter extends RecyclerView.Adapter<customAdapter.myViewHold
                         .setExpanded(false)  // This will enable the expand feature, (similar to android L share dialog)
                         .create();
                 View holderView = (LinearLayout) dialog.getHolderView();
+                ImageView  img = holderView.findViewById(R.id.image_work);
                 TextView topic = holderView.findViewById(R.id.topic_view);
                 TextView description = holderView.findViewById(R.id.description_view);
                 topic.setText(holder.topic.getText());
                 description.setText(holder.desc.getText());
+                if(Image.equalsIgnoreCase("science")){
+                    img.setImageResource(R.drawable.science);
+                }else if(Image.equalsIgnoreCase("english")){
+                    img.setImageResource(R.drawable.english);
+                }else if(Image.equalsIgnoreCase("urdu")){
+                    img.setImageResource(R.drawable.urdu);
+                }else if(Image.equalsIgnoreCase("math")){
+                    img.setImageResource(R.drawable.math);
+                }else if(Image.equalsIgnoreCase("gk")){
+                    img.setImageResource(R.drawable.gk);
+                }else if(Image.equalsIgnoreCase("others")){
+                    img.setImageResource(R.drawable.others);
+                }
                 dialog.show();
             }
         });
@@ -79,8 +99,22 @@ public class customAdapter extends RecyclerView.Adapter<customAdapter.myViewHold
                         .setExpanded(false)  // This will enable the expand feature, (similar to android L share dialog)
                         .create();
                 View holderView = (LinearLayout) dialog.getHolderView();
+                ImageView  img = holderView.findViewById(R.id.image_work);
                 TextView topic = holderView.findViewById(R.id.topic_view);
                 TextView description = holderView.findViewById(R.id.description_view);
+                if(Image.equalsIgnoreCase("science")){
+                    img.setImageResource(R.drawable.science);
+                }else if(Image.equalsIgnoreCase("english")){
+                    img.setImageResource(R.drawable.english);
+                }else if(Image.equalsIgnoreCase("urdu")){
+                    img.setImageResource(R.drawable.urdu);
+                }else if(Image.equalsIgnoreCase("math")){
+                    img.setImageResource(R.drawable.math);
+                }else if(Image.equalsIgnoreCase("gk")){
+                    img.setImageResource(R.drawable.gk);
+                }else if(Image.equalsIgnoreCase("others")){
+                    img.setImageResource(R.drawable.others);
+                }
                 topic.setText(holder.topic.getText());
                 description.setText(holder.desc.getText());
                 dialog.show();
