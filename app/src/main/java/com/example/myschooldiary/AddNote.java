@@ -68,6 +68,7 @@ public class AddNote extends AppCompatActivity {
         map.put("Subject", Subject);
         map.put("Query", Query);
         map.put("Id", Id);
+        map.put("teacher", false);
 
         db.collection("Note").document(Id).set(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -1,16 +1,25 @@
 package com.example.myschooldiary;
 
 public class QueryModel {
-    String ClassCode, Name, Query, Subject;
+    String ClassCode, Name, Query, Subject, Id;
 
     public QueryModel(){
         
     }
-    public QueryModel(String classCode, String Name, String query, String subject) {
+    public QueryModel(String classCode, String Name, String query, String subject, String Id) {
         this.ClassCode = classCode;
         this.Name = Name;
         this.Query = query;
         this.Subject = subject;
+        this.Id = Id;
+    }
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
     }
 
     public String getClassCode() {

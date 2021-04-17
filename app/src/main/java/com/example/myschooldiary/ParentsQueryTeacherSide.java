@@ -47,6 +47,7 @@ public class ParentsQueryTeacherSide extends AppCompatActivity {
         Object classCode = ClassCode;
         firebaseFirestore.collection("Note")
                 .whereEqualTo("ClassCode", classCode)
+                .whereEqualTo("teacher", false)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
