@@ -3,17 +3,26 @@ package com.example.myschooldiary;
 import java.util.Date;
 
 public class model {
-    String  Description, Image, Topic, Id;
+    String  Description, Image, Topic, Id, Day;
     Date date;
     public model(){
 
     }
-    public model( String description, String image, String topic, String Id, Date date) {
+    public model( String description, String image, String topic, String Id, Date date, String day) {
         this.Description = description;
         this.Image = image;
         this.Topic = topic;
         this.Id = Id;
         this.date = date;
+        this.Day = day;
+    }
+
+    public String getDay() {
+        return Day;
+    }
+
+    public void setDay(String day) {
+        Day = day;
     }
 
     public Date getDate() {

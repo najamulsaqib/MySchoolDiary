@@ -16,7 +16,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class StudentDiary extends AppCompatActivity {
@@ -42,10 +44,14 @@ public class StudentDiary extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         Intent intent = getIntent();
         ClassCode = intent.getStringExtra("ClassCode");
-
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat dateOnly = new SimpleDateFormat("MM/dd/yyyy");
+        String date = dateOnly.format(cal.getTime());
+        Object Date = date;
         Object classCode = ClassCode;
         firebaseFirestore.collection("Work")
                 .whereEqualTo("ClassCode", classCode)
+                .whereEqualTo("Day", Date)
                 .orderBy("Date", Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {

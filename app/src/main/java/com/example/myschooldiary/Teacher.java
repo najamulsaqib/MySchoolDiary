@@ -31,7 +31,9 @@ import com.google.firebase.firestore.core.OrderBy;
 
 import org.w3c.dom.Document;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Queue;
 
@@ -77,11 +79,11 @@ public class Teacher extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
 //        ---------------------------------------------------->
         Object classCode = ClassCode;
         firebaseFirestore.collection("Work")
-                .whereEqualTo("ClassCode", classCode)
-                .orderBy("Date", Query.Direction.DESCENDING)
+                .whereEqualTo("ClassCode", classCode).orderBy("Date", Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override

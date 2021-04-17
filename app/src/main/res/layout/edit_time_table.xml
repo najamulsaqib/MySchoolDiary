@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="Monday"
+        android:textColor="@color/teal_700"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:fontFamily="casual"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10sp"
+        android:orientation="vertical">
+            <EditText
+                android:id="@+id/lec1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:hint="Lecture 1"/>
+            <EditText
+                android:id="@+id/lec2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:hint="Lecture 2"/>
+            <EditText
+                android:id="@+id/lec3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:hint="Lecture 3"/>
+            <EditText
+                android:id="@+id/lec4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:hint="Lecture 4"/>
+            <EditText
+                android:id="@+id/lec5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:hint="Lecture 5"/>
+            <EditText
+                android:id="@+id/lec6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:hint="Lecture 6"/>
+            <EditText
+                android:id="@+id/lec7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="casual"
+                android:hint="Lecture 7"/>
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/updateTime_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:text="Update Time Table"
+        android:background="@drawable/btn_login"/>
+</LinearLayout>

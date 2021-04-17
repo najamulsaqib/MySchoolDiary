@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TimeTableStudent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,16 +18,21 @@
             android:layout_marginBottom="5dp"
             android:padding="1dp"
             android:layout_weight="1">
-            <TextView
-                android:id="@+id/monday"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingLeft="10dp"
-                app:fontFamily="casual"
-                android:textColor="#eb4034"
-                android:text="Monday"
-                android:textSize="50sp"
-                />
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/monday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:text="Monday"
+                    android:textColor="#eb4034"
+                    android:textSize="50sp"
+                    android:textStyle="bold"
+                    app:fontFamily="casual" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -34,16 +40,22 @@
             android:layout_marginBottom="5dp"
             android:padding="1dp"
             android:layout_weight="1">
-            <TextView
-                android:id="@+id/tuesday"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingLeft="10dp"
-                app:fontFamily="casual"
-                android:textColor="#383e7d"
-                android:text="Tuesday"
-                android:textSize="50sp"
-                />
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tuesday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    app:fontFamily="casual"
+                    android:textStyle="bold"
+                    android:textColor="#00D15E"
+                    android:text="Tuesday"
+                    android:textSize="50sp"
+                    />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -51,16 +63,22 @@
             android:layout_marginBottom="5dp"
             android:padding="1dp"
             android:layout_weight="1">
-            <TextView
-                android:id="@+id/wednesday"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingLeft="10dp"
-                app:fontFamily="casual"
-                android:textColor="#ff00f7"
-                android:text="Wednesday"
-                android:textSize="50sp"
-                />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/wednesday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:text="Wednesday"
+                    android:textColor="#000000"
+                    android:textSize="50sp"
+                    android:textStyle="bold"
+                    app:fontFamily="casual" />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -68,16 +86,22 @@
             android:layout_marginBottom="5dp"
             android:padding="1dp"
             android:layout_weight="1">
-            <TextView
-                android:id="@+id/thursday"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:fontFamily="casual"
-                android:textColor="#0eb092"
-                android:paddingLeft="10dp"
-                android:text="Thursday"
-                android:textSize="50sp"
-                />
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/thursday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:textStyle="bold"
+                    app:fontFamily="casual"
+                    android:textColor="#009688"
+                    android:text="Thursday"
+                    android:textSize="50sp"
+                    />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -85,16 +109,22 @@
             android:layout_marginBottom="5dp"
             android:padding="1dp"
             android:layout_weight="1">
-            <TextView
-                android:id="@+id/friday"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:fontFamily="casual"
-                android:textColor="#00a6ff"
-                android:paddingLeft="10dp"
-                android:text="Friday"
-                android:textSize="50sp"
-                />
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/friday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    app:fontFamily="casual"
+                    android:textColor="#3F51B5"
+                    android:textStyle="bold"
+                    android:text="Friday"
+                    android:textSize="50sp"
+                    />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -102,16 +132,22 @@
             android:layout_marginBottom="5dp"
             android:padding="1dp"
             android:layout_weight="1">
-            <TextView
-                android:id="@+id/saturday"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:fontFamily="casual"
-                android:textColor="#0ecf1b"
-                android:paddingLeft="10dp"
-                android:text="Saturday"
-                android:textSize="50sp"
-                />
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/saturday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    app:fontFamily="casual"
+                    android:textColor="#FF9800"
+                    android:textStyle="bold"
+                    android:text="Saturday"
+                    android:textSize="50sp"
+                    />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -119,16 +155,22 @@
             android:layout_marginBottom="5dp"
             android:padding="1dp"
             android:layout_weight="1">
-            <TextView
-                android:id="@+id/sunday"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:fontFamily="casual"
-                android:textColor="#ff9100"
-                android:paddingLeft="10dp"
-                android:text="Sunday"
-                android:textSize="50sp"
-                />
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/sunday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    app:fontFamily="casual"
+                    android:textColor="#BA00FD"
+                    android:textStyle="bold"
+                    android:text="Sunday"
+                    android:textSize="50sp"
+                    />
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 

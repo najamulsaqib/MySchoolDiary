@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -88,6 +89,10 @@ public class addWork extends AppCompatActivity {
     }
     public void saveToFirebase(String ClassCode, String Topic, String Description, String Image){
         Date currentTime = Calendar.getInstance().getTime();
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat dateOnly = new SimpleDateFormat("MM/dd/yyyy");
+        String date = dateOnly.format(cal.getTime());
+        System.out.println("Date : "+date);
         String Id = UUID.randomUUID().toString();
         HashMap<String, Object> map = new HashMap<>();
         map.put("ClassCode", ClassCode);
@@ -95,6 +100,7 @@ public class addWork extends AppCompatActivity {
         map.put("Description", Description);
         map.put("Image", Image);
         map.put("Date", currentTime);
+        map.put("Day", date);
         map.put("Id", Id);
 
         db.collection("Work").document(Id).set(map)
