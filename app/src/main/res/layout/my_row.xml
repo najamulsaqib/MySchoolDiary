@@ -56,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/teal_700"
                     android:fontFamily="casual"
-                    android:maxLines="4"
+                    android:maxLines="3"
                     android:text="Simple text to Show Here!\nSimple text to Show Here!\nSimple text to Show Here!" />
             </LinearLayout>
         </LinearLayout>

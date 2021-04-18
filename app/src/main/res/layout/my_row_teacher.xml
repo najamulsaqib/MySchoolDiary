@@ -37,7 +37,7 @@
                     android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="4"
+                    android:maxLines="3"
                     android:textColor="@color/teal_700"
                     android:fontFamily="casual"
                     android:text="The strength of Science and its online journal sites rests with the strengths of its community of authors, who provide cutting-edge research, incisive scientific" />
