@@ -26,7 +26,7 @@
                     android:id="@+id/imageView"
                     android:layout_width="100sp"
                     android:layout_height="100sp"
-                    android:src="@drawable/nothing"/>
+                    android:src="@drawable/empty"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_marginLeft="4dp"

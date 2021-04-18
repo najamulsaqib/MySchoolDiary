@@ -11,7 +11,7 @@
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/nothing"/>
+        android:src="@drawable/empty"/>
     <androidx.recyclerview.widget.RecyclerView
         android:paddingTop="10dp"
         android:layout_width="match_parent"
