@@ -58,7 +58,7 @@ public class TrackBus extends FragmentActivity implements OnMapReadyCallback, Lo
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        if(user == "bus01@hwd.com") {
+        if(user.equalsIgnoreCase("bus01@hwd.com")) {
             getLocationUpdates();
         }
         System.out.println("USer email : "+ user);
