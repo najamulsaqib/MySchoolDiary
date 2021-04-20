@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.Navigation;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -11,12 +13,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -34,7 +39,7 @@ import java.util.List;
 
 public class teacherDashboard extends AppCompatActivity {
 
-    private ImageView Notes, Diary, Timetable, Logout;
+    private ImageView Notes, Diary, Timetable, Bus;
     private TextView headerName, CodeView;
     private DatabaseReference reference;
     private String UserID, ClassCode, Name;
@@ -43,15 +48,15 @@ public class teacherDashboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teacher_dashboard);
-        getSupportActionBar().hide();
+        setContentView(R.layout.nav_teacher);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 //        --------------------------------------------------------------------->
+        NavigationView navigationView = findViewById(R.id.nav_view);
         Notes = findViewById(R.id.bus);
         Diary = findViewById(R.id.imageView3);
         headerName = findViewById(R.id.textView);
         Timetable = findViewById(R.id.bus1);
-        Logout = findViewById(R.id.imageView31);
+        Bus = findViewById(R.id.imageView31);
         reference = FirebaseDatabase.getInstance().getReference("Users");
         user = FirebaseAuth.getInstance().getCurrentUser();
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -84,7 +89,40 @@ public class teacherDashboard extends AppCompatActivity {
                 Toast.makeText(teacherDashboard.this, "Something Happened Wrong!", Toast.LENGTH_LONG).show();
             }
         });
-
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if(item.getItemId()==R.id.nav_notes){
+                    Intent i = new Intent(teacherDashboard.this, ParentsQueryTeacherSide.class);
+                    i.putExtra("ClassCode", ClassCode);
+                    startActivity(i);
+                }
+                if(item.getItemId()==R.id.nav_diary){
+                    Intent i = new Intent(teacherDashboard.this, Teacher.class);
+                    i.putExtra("ClassCode", ClassCode);
+                    i.putExtra("User", UserID);
+                    startActivity(i);
+                }
+                if(item.getItemId()==R.id.nav_time_table){
+                    Intent i = new Intent(teacherDashboard.this, TimeTable.class);
+                    i.putExtra("ClassCode", ClassCode);
+                    i.putExtra("User", UserID);
+                    startActivity(i);
+                }
+                if(item.getItemId()==R.id.nav_bus){
+                    Intent i = new Intent(teacherDashboard.this, TrackBus.class);
+                    i.putExtra("ClassCode", ClassCode);
+                    startActivity(i);
+                }
+                if(item.getItemId()==R.id.nav_logout){
+                    FirebaseAuth.getInstance().signOut();
+                    Intent i = new Intent(teacherDashboard.this, Login.class);
+                    startActivity(i);
+                    finish();
+                }
+                return true;
+            }
+        });
         Notes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,15 +147,15 @@ public class teacherDashboard extends AppCompatActivity {
                 Intent i = new Intent(teacherDashboard.this, TimeTable.class);
                 i.putExtra("ClassCode", ClassCode);
                 i.putExtra("User", UserID);
-                startActivity(i);            }
+                startActivity(i);
+            }
         });
-        Logout.setOnClickListener(new View.OnClickListener() {
+        Bus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent i = new Intent(teacherDashboard.this, Login.class);
+                Intent i = new Intent(teacherDashboard.this, TrackBus.class);
+                i.putExtra("ClassCode", ClassCode);
                 startActivity(i);
-                finish();
             }
         });
     }

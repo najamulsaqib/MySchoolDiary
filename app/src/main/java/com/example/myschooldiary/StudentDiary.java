@@ -32,7 +32,6 @@ public class StudentDiary extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_diary);
-        getSupportActionBar().hide();
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 //        --------------------------------------------------->
         recyclerView = findViewById(R.id.recyclerView);

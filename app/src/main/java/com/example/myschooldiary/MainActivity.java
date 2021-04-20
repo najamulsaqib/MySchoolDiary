@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         //------------------------------------------------>
@@ -57,6 +56,13 @@ public class MainActivity extends AppCompatActivity {
                                 }
                                 else if(Designation.equals("Student")){
                                     Intent i = new Intent(MainActivity.this, Student.class);
+                                    i.putExtra("ClassCode", ClassCode);
+                                    i.putExtra("User", UserID);
+                                    startActivity(i);
+                                    finish();
+                                }
+                                else if(Designation.equals("Driver")){
+                                    Intent i = new Intent(MainActivity.this, TrackBus.class);
                                     i.putExtra("ClassCode", ClassCode);
                                     i.putExtra("User", UserID);
                                     startActivity(i);

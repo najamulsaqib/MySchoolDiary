@@ -43,7 +43,6 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getSupportActionBar().hide();
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         signup = findViewById(R.id.signup_intent);
@@ -97,6 +96,13 @@ public class Login extends AppCompatActivity {
                                         }
                                         else if(Designation.equals("Student")){
                                             Intent i = new Intent(Login.this, Student.class);
+                                            i.putExtra("ClassCode", ClassCode);
+                                            i.putExtra("User", UserID);
+                                            startActivity(i);
+                                            finish();
+                                        }
+                                        else if(Designation.equals("Driver")){
+                                            Intent i = new Intent(Login.this, TrackBus.class);
                                             i.putExtra("ClassCode", ClassCode);
                                             i.putExtra("User", UserID);
                                             startActivity(i);

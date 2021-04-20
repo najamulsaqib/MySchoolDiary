@@ -30,7 +30,6 @@ public class ParentsQueryTeacherSide extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parents_query_teacher_side);
-        getSupportActionBar().hide();
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 //        ---------------------------------------------------------->
         firebaseFirestore = FirebaseFirestore.getInstance();
