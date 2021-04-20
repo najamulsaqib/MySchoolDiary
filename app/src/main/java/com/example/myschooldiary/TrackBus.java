@@ -137,7 +137,7 @@ public class TrackBus extends FragmentActivity implements OnMapReadyCallback, Lo
                 if(snapshot.exists()){
                     location = snapshot.getValue(locationModel.class);
                     LatLng loc = new LatLng(location.latitude, location.longitude);
-                    mMap.setMinZoomPreference(20);
+                    mMap.setMinZoomPreference(15);
                     marker.setPosition(loc);
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
                 }
