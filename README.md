@@ -4,6 +4,7 @@
 - [Send Parents Note to Teacher](###Send-Parents-Note-to-Teacher)
 - [Manage Class Time Table](###Manage-Class-Time-Table)
 - [Track Bus](###Track-Bus)
+
 For a School, Homework Diary eliminates paper wastage, provides one window for all their communication needs (instead of schools diary notes, SMS, email, for different messages) & improves staff productivity.
 
 ### Send homework or assignments to students
