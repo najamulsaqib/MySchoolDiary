@@ -19,3 +19,5 @@ Teacher can manage their call time table as they want and student can view time 
 Parents, teacher and Bus Driver they all can track location of bus driver through their mobile app. It use Mobile GPS tracking through internet and stream their locations live to your screen.
 
 ~~GOOGLE API KEY IS REMOVED~~
+
+ 
