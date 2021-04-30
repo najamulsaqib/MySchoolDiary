@@ -1,9 +1,9 @@
 # MySchoolDiary
 **MySchool Diary** - is a mobile platform that enables parents to receive timely updates *school or class alerts, Home Task updates, Patent’s notes for teacher*, to track child’s progress homework and to monitor child *Track Bus* while kids are in transit on their smartphones. Some key features of Homework diary are following:
-- [Send homework or assignments to students](#link1)
-- [Send Parents Note to Teacher](#link1)
-- [Manage Class Time Table](#link1)
-- [Track Bus](#link1)
+1. [Send homework or assignments to students](#link1)
+1. [Send Parents Note to Teacher](#link1)
+1. [Manage Class Time Table](#link1)
+1. [Track Bus](#link1)
 
 For a School, Homework Diary eliminates paper wastage, provides one window for all their communication needs (instead of schools diary notes, SMS, email, for different messages) & improves staff productivity.
 
